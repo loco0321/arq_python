@@ -23,5 +23,6 @@ class MovieDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        create_movie.delay()
+        for i in range(40):
+            create_movie.delay(i, 2)
         return context

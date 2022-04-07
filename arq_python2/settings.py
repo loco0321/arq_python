@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -118,6 +118,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CELERY_BROKER_URL = 'amqp://leon:leon@localhost:5672/arq_python'
+CELERY_BROKER_URL = 'amqp://<USERNAME>:<PASSWORD>@localhost:5672/<VHOST>'
 
 CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+try:
+    exec(open(os.path.join(BASE_DIR, 'arq_python2', 'settings_local.py')).read())
+except IOError:
+    raise Exception('error reading local settings')

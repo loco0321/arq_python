@@ -14,3 +14,4 @@ initial_file.txt
 .vscode/
 scratches/*
 htmlcov/*
+.coveragerc

@@ -126,7 +126,7 @@ CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
 CELERY_BEAT_SCHEDULE = {
     'task.create_currency_value': {
         'task': 'movie.tasks.create_currency_value',
-        'schedule': timedelta(days=5),
+        'schedule': timedelta(seconds=5),
     }
 }
 
